@@ -15,8 +15,8 @@ import * as Progress from "react-native-progress";
 export default function StudentsAttendance() {
   const navigation = useNavigation();
 
-  const handleAddStudentsClick = () => {
-    navigation.navigate("AddStudents");
+  const handleAttendanceHistoryClick = () => {
+    navigation.navigate("AttendanceHistory");
   };
 
   const handleAttendanceClick = () => {
@@ -47,6 +47,10 @@ export default function StudentsAttendance() {
   const handleStudentProfileClick = () => {
     navigation.navigate("StudentProfile");
   };
+  const handleAddStudentsClick = () => {
+    navigation.navigate("AddStudents"); // Navigate to the AddStudents screen
+  };
+
   const handleMediatorClick = (type) => {
     // Handle mediator button click based on type
     switch (type) {
@@ -55,7 +59,7 @@ export default function StudentsAttendance() {
 
         break;
       case "Absent":
-        // Handle Absent button click
+        navigation.navigate("AttendanceHistory");// Handle Absent button click
         break;
       case "Leave":
         // Handle Leave button click
@@ -64,12 +68,29 @@ export default function StudentsAttendance() {
         break;
     }
   };
+  const handleMediator1Click = (type) => {
+    switch (type) {
+      case "Present":
+        navigation.navigate("TutorsAttendanceHistory", { type: "Present" });
+        break;
+      case "Absent":
+        navigation.navigate("TutorsAttendanceHistory", { type: "Absent" });
+        break;
+      case "Leave":
+        navigation.navigate("TutorsAttendanceHistory", { type: "Leave" });
+        break;
+      default:
+        break;
+    }
+  };
+  
+  
 
   return (
     <View style={styles.container}>
       {/* <ScrollView> */}
       <View style={styles.imageContainer}>
-        <TouchableOpacity onPress={handleAddStudentsClick}>
+        <TouchableOpacity onPress={handleAttendanceHistoryClick}>
           <Image
             style={styles.image}
             source={require("./../Assets/Images/status.png")}
@@ -173,21 +194,21 @@ export default function StudentsAttendance() {
         <View style={styles.mediator}>
           <TouchableOpacity
             style={styles.mediatorButton}
-            onPress={() => handleMediatorClick("Present")}
+            onPress={() => handleMediator1Click("Present")}
           >
             <Text style={styles.mediatorButtonText}>Present</Text>
           </TouchableOpacity>
           <View style={styles.verticalLine} />
           <TouchableOpacity
             style={styles.mediatorButton}
-            onPress={() => handleMediatorClick("Absent")}
+            onPress={() => handleMediator1Click("Absent")}
           >
             <Text style={styles.mediatorButtonText}>Absent</Text>
           </TouchableOpacity>
           <View style={styles.verticalLine} />
           <TouchableOpacity
             style={styles.mediatorButton}
-            onPress={() => handleMediatorClick("Leave")}
+            onPress={() => handleMediator1Click("Leave")}
           >
             <Text style={styles.mediatorButtonText}>Leave</Text>
           </TouchableOpacity>
@@ -366,7 +387,7 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: "black",
     borderRadius: 25,
-    padding: 5,
+    // padding: 5,
     width: "90%",
   },
   mediatorButton: {

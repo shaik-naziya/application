@@ -5,6 +5,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
+  ScrollView,
   TouchableOpacity,
 } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
@@ -16,24 +17,50 @@ export default function AddStudents({ navigation }) {
   const handleOptionPress = (option) => {
     setSelectedOption(option);
     if (option === "students") {
-      // Handle the logic for "Student's" option here (if needed)
-      // Navigate back to the AddStudents page
       navigation.navigate("AddStudents");
     } else if (option === "tutors") {
-      // Handle the logic for "Tutor's" option here (if needed)
-      // Set the state to control rendering and highlight
       setShowTutors(true);
       navigation.navigate("AddTutors");
     }
   };
-
   const handlePortfolioPress = () => {
-    // Navigate to another page when the portfolio logo is clicked
-    // You need to replace 'AnotherPage' with the actual name of the target component or screen
-    navigation.navigate("AnotherPage");
+    navigation.navigate("StudentProfile");
   };
 
-  // Use the useFocusEffect hook to update the selectedOption based on the screen focus
+  const handleHomeClick = () => {
+    navigation.navigate("StudentsAttendance");
+  };
+
+  const handleAttendanceClick = () => {
+    navigation.navigate("StudentsAttendanceUpdate");
+  };
+
+  const handleReportsClick = () => {
+    navigation.navigate("MarksEntry");
+  };
+
+  const handleActivityClick = () => {
+    navigation.navigate("Activities");
+  };
+
+  const handleStudentsFormClick = () => {
+    navigation.navigate("StudentsForm");
+  };
+
+  const handleTutorsFormClick = () => {
+    navigation.navigate("TutorsForm");
+  };
+
+  const handleStudentProfileClick = () => {
+    navigation.navigate("StudentProfile");
+  };
+
+  const handlePlusPress = () => {
+    // Handle the logic for plus press (navigate to the appropriate screen)
+    navigation.navigate("StudentsForm");
+  };
+
+
   useFocusEffect(
     React.useCallback(() => {
       setSelectedOption("tutors");
@@ -84,8 +111,8 @@ export default function AddStudents({ navigation }) {
       <View style={styles.line} />
 
 
-      {/* <ScrollView > */}
-      <TouchableOpacity onPress={handlePortfolioPress}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+       <TouchableOpacity onPress={handlePortfolioPress}>
         <View style={styles.portfolioContainer}>
           <Image
             style={styles.portfolioLogo}
@@ -143,44 +170,41 @@ export default function AddStudents({ navigation }) {
 
 
 
-      {/* </ScrollView> */}
+      </ScrollView>
 
       <View style={styles.bottomContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("StudentsAttendance")}
-        >
+        <TouchableOpacity onPress={handleHomeClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/home.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentsForm")}>
-          <Image
-            style={styles.bottomIcon}
-            source={require("./../Assets/Images/addIcon.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("StudentsAttendanceUpdate")}
-        >
+        <TouchableOpacity onPress={handleAttendanceClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/attendance.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("ReportsPage")}>
+        <TouchableOpacity onPress={handleStudentsFormClick}>
           <Image
             style={styles.bottomIcon}
-            source={require("./../Assets/Images/reports.png")}
+            source={require("./../Assets/Images/addButton.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentProfile")}>
+        <TouchableOpacity onPress={handleTutorsFormClick}>
+          <Image
+            style={styles.bottomIcon}
+            source={require("./../Assets/Images/addIcon.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleStudentProfileClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/profile.png")}
           />
         </TouchableOpacity>
       </View>
+
     </View>
   );
 }
@@ -197,6 +221,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: "#e0e0e0",
     borderRadius: 15,
+  },
+  scrollContainer: {
+    paddingBottom: 80, // Adjust as needed for bottom container height
   },
   searchBarLogo: {
     width: 20,
@@ -250,15 +277,13 @@ const styles = StyleSheet.create({
     color: "#637087",
   },
   bottomContainer: {
-    // position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    top: 98,
+    top: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,
-    // paddingHorizontal: 20,
     backgroundColor: "#fff",
     borderTopWidth: 1,
     borderTopColor: "#fff",

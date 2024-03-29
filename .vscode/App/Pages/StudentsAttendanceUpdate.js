@@ -19,14 +19,39 @@ export default function AddStudents({ navigation }) {
       navigation.navigate("TutorsAttendanceUpdate"); // Navigate to the "Tutor's" page
     }
   };
-
   const handlePortfolioPress = () => {
-    navigation.navigate("StudentProfile"); // Navigate to another page when the portfolio logo is clicked
+    navigation.navigate("StudentProfile");
   };
 
-  const handlePlusPress = () => {
-    navigation.navigate(""); // Navigate to the next page when the plus image is clicked
+  const handleHomeClick = () => {
+    navigation.navigate("StudentsAttendance");
   };
+
+  const handleAttendanceClick = () => {
+    navigation.navigate("StudentsAttendanceUpdate");
+  };
+
+  const handleReportsClick = () => {
+    navigation.navigate("MarksEntry");
+  };
+
+  const handleActivityClick = () => {
+    navigation.navigate("Activities");
+  };
+
+  const handleStudentsFormClick = () => {
+    navigation.navigate("StudentsForm");
+  };
+
+  const handleTutorsFormClick = () => {
+    navigation.navigate("TutorsForm");
+  };
+
+  const handleStudentProfileClick = () => {
+    navigation.navigate("StudentProfile");
+  };
+
+  
 
   // Use the useFocusEffect hook to update the selectedOption based on the screen focus
   useFocusEffect(
@@ -34,6 +59,7 @@ export default function AddStudents({ navigation }) {
       setSelectedOption("students");
     }, [])
   );
+  
 
   return (
     <View style={styles.body}>
@@ -233,35 +259,31 @@ export default function AddStudents({ navigation }) {
         </TouchableOpacity>
       </ScrollView>
       <View style={styles.bottomContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("StudentsAttendance")}
-        >
+        <TouchableOpacity onPress={handleHomeClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/home.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentsForm")}>
-          <Image
-            style={styles.bottomIcon}
-            source={require("./../Assets/Images/addIcon.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("StudentsAttendanceUpdate")}
-        >
+        <TouchableOpacity onPress={handleAttendanceClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/attendance.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("ReportsPage")}>
+        <TouchableOpacity onPress={handleStudentsFormClick}>
           <Image
             style={styles.bottomIcon}
-            source={require("./../Assets/Images/reports.png")}
+            source={require("./../Assets/Images/addButton.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentProfile")}>
+        <TouchableOpacity onPress={handleTutorsFormClick}>
+          <Image
+            style={styles.bottomIcon}
+            source={require("./../Assets/Images/addIcon.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleStudentProfileClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/profile.png")}
@@ -379,15 +401,13 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   bottomContainer: {
-    // position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    top: 0,
+    // top: 210,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,
-    // paddingHorizontal: 20,
     backgroundColor: "#fff",
     borderTopWidth: 1,
     borderTopColor: "#fff",
@@ -397,7 +417,6 @@ const styles = StyleSheet.create({
     height: 50,
     resizeMode: "contain",
   },
-
   summaryBox1: {
     justifyContent: "space-around",
     borderWidth: 2,

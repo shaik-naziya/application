@@ -31,6 +31,37 @@ export default function StudentsForm() {
   const handleAdditionalSkillsChange = (value) => {
     setAdditionalSkills(value);
   };
+  const handlePortfolioPress = () => {
+    navigation.navigate("StudentProfile");
+  };
+
+  const handleHomeClick = () => {
+    navigation.navigate("StudentsAttendance");
+  };
+
+  const handleAttendanceClick = () => {
+    navigation.navigate("StudentsAttendanceUpdate");
+  };
+
+  const handleReportsClick = () => {
+    navigation.navigate("MarksEntry");
+  };
+
+  const handleActivityClick = () => {
+    navigation.navigate("Activities");
+  };
+
+  const handleStudentsFormClick = () => {
+    navigation.navigate("StudentsForm");
+  };
+
+  const handleTutorsFormClick = () => {
+    navigation.navigate("TutorsForm");
+  };
+
+  const handleStudentProfileClick = () => {
+    navigation.navigate("StudentProfile");
+  };
 
   const handleOptionPress = (option) => {
     setSelectedOption(option);
@@ -113,7 +144,7 @@ export default function StudentsForm() {
           onChangeText={setPursuingQualification}
         />
 
-<Text style={styles.heading}>Specialization</Text>
+        <Text style={styles.heading}>Specialization</Text>
         <View style={styles.inputContainer}>
           <PickerComponent
             selectedValue={specialization}
@@ -150,38 +181,37 @@ export default function StudentsForm() {
           onChangeText={setTeachingSince}
         />
 
-
         <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
           <Text style={styles.submitButtonText}>Submit</Text>
         </TouchableOpacity>
       </ScrollView>
 
       <View style={styles.bottomContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentsAttendance")}>
+        <TouchableOpacity onPress={handleHomeClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/home.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentsForm")}>
-          <Image
-            style={styles.bottomIcon}
-            source={require("./../Assets/Images/addIcon.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentsAttendanceUpdate")}>
+        <TouchableOpacity onPress={handleAttendanceClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/attendance.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("ReportsPage")}>
+        <TouchableOpacity onPress={handleStudentsFormClick}>
           <Image
             style={styles.bottomIcon}
-            source={require("./../Assets/Images/reports.png")}
+            source={require("./../Assets/Images/addButton.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentProfile")}>
+        <TouchableOpacity onPress={handleTutorsFormClick}>
+          <Image
+            style={styles.bottomIcon}
+            source={require("./../Assets/Images/addIcon.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleStudentProfileClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/profile.png")}
@@ -262,7 +292,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   bottomContainer: {
-    // position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
@@ -270,16 +299,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,
-    // paddingHorizontal: 20,
     backgroundColor: "#fff",
     borderTopWidth: 1,
-    borderTopColor: "#ccc",
+    borderTopColor: "#fff",
   },
   bottomIcon: {
     width: 70,
     height: 50,
     resizeMode: "contain",
   },
-
-
 });

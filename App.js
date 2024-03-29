@@ -24,6 +24,7 @@ import EnterMarks from "./.vscode/App/Pages/EnterMarks";
 import Activities from "./.vscode/App/Pages/Activities";
 import ActivityPlans from "./.vscode/App/Pages/ActivityPlans";
 import AttendaceHistory from "./.vscode/App/Pages/AttendaceHistory";
+import TutorsAttendanceHistory from "./.vscode/App/Pages/TutorsAttendanceHistory";
 
 const Stack = createStackNavigator();
 
@@ -50,6 +51,8 @@ const App = () => {
         <Stack.Screen name="Activities" component={Activities} />
         <Stack.Screen name="ActivityPlans" component={ActivityPlans} />
         <Stack.Screen name="AttendanceHistory" component={AttendaceHistory} />
+        <Stack.Screen name="TutorsAttendanceHistory" component={TutorsAttendanceHistory} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

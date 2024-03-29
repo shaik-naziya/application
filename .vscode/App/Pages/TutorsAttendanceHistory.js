@@ -94,12 +94,17 @@ export default function AddStudents({ navigation }) {
         <View style={styles.containerRow}>
           <View style={styles.container}>
             <Text style={styles.text}>Present</Text>
-            <Text style={styles.numberText}>12</Text>
+            <Text style={styles.numberText}>10</Text>
           </View>
           <View style={styles.container}>
             <Text style={styles.text}>Absent</Text>
-            <Text style={styles.numberText}>10</Text>
+            <Text style={styles.numberText}>1</Text>
           </View>
+          <View style={styles.container}>
+            <Text style={styles.text}>Leave</Text>
+            <Text style={styles.numberText}>5</Text>
+          </View>
+
         </View>
         {/* Add more TouchableOpacity components for portfolio items as needed */}
 
@@ -110,7 +115,7 @@ export default function AddStudents({ navigation }) {
               source={require("./../Assets/Images/portfolio.png")}
             />
             <View style={styles.portfolioInfo}>
-              <Text style={styles.nameText}>Student 1</Text>
+              <Text style={styles.nameText}>Tutor 1</Text>
               <Text style={styles.idText}>ID : 01</Text>
             </View>
           </View>
@@ -122,7 +127,7 @@ export default function AddStudents({ navigation }) {
               source={require("./../Assets/Images/portfolio.png")}
             />
             <View style={styles.portfolioInfo}>
-              <Text style={styles.nameText}>Student 2</Text>
+              <Text style={styles.nameText}>Tutor 2</Text>
               <Text style={styles.idText}>ID : 02</Text>
             </View>
           </View>
@@ -134,7 +139,7 @@ export default function AddStudents({ navigation }) {
               source={require("./../Assets/Images/portfolio.png")}
             />
             <View style={styles.portfolioInfo}>
-              <Text style={styles.nameText}>Student 3</Text>
+              <Text style={styles.nameText}>Tutor 3</Text>
               <Text style={styles.idText}>ID : 03</Text>
             </View>
           </View>
@@ -146,7 +151,7 @@ export default function AddStudents({ navigation }) {
               source={require("./../Assets/Images/portfolio.png")}
             />
             <View style={styles.portfolioInfo}>
-              <Text style={styles.nameText}>Student 4</Text>
+              <Text style={styles.nameText}>Tutor 4</Text>
               <Text style={styles.idText}>ID : 04</Text>
             </View>
           </View>
@@ -158,7 +163,7 @@ export default function AddStudents({ navigation }) {
               source={require("./../Assets/Images/portfolio.png")}
             />
             <View style={styles.portfolioInfo}>
-              <Text style={styles.nameText}>Student 5</Text>
+              <Text style={styles.nameText}>Tutor 5</Text>
               <Text style={styles.idText}>ID : 05</Text>
             </View>
           </View>
@@ -170,7 +175,7 @@ export default function AddStudents({ navigation }) {
               source={require("./../Assets/Images/portfolio.png")}
             />
             <View style={styles.portfolioInfo}>
-              <Text style={styles.nameText}>Student 6</Text>
+              <Text style={styles.nameText}>Tutor 6</Text>
               <Text style={styles.idText}>ID : 06</Text>
             </View>
           </View>
@@ -182,7 +187,7 @@ export default function AddStudents({ navigation }) {
               source={require("./../Assets/Images/portfolio.png")}
             />
             <View style={styles.portfolioInfo}>
-              <Text style={styles.nameText}>Student 7</Text>
+              <Text style={styles.nameText}>Tutor 7</Text>
               <Text style={styles.idText}>ID : 07</Text>
             </View>
           </View>
@@ -292,14 +297,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F0F2F5",
     borderRadius: 10,
-    padding: 10,
+    // padding: 10,
     height: 110,
     marginVertical: 10, // Adjust vertical margin as needed
   },
   text: {
     fontSize: 16,
-    marginLeft: 30,
-    marginTop: 10,
+    marginTop: 15,
+    justifyContent: "center",
+    textAlign: "center",
   },
   numberText: {
     fontSize: 24,

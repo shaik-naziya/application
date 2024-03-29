@@ -1,13 +1,16 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native"; // Import useNavigation
-
 
 export default function Activities() {
   const navigation = useNavigation();
 
-  const handleAddStudentsClick = () => {
-    navigation.navigate("AddStudents");
+  const handlePortfolioPress = () => {
+    navigation.navigate("StudentProfile");
+  };
+
+  const handleHomeClick = () => {
+    navigation.navigate("StudentsAttendance");
   };
 
   const handleAttendanceClick = () => {
@@ -21,6 +24,7 @@ export default function Activities() {
   const handleActivityClick = () => {
     navigation.navigate("Activities");
   };
+
   const handleStudentsFormClick = () => {
     navigation.navigate("StudentsForm");
   };
@@ -29,27 +33,27 @@ export default function Activities() {
     navigation.navigate("TutorsForm");
   };
 
-  const handleHomeClick = () => {
-    navigation.navigate("StudentsAttendance");
+  const handleStudentProfileClick = () => {
+    navigation.navigate("StudentProfile");
   };
-
   const handlePlusPress = () => {
     navigation.navigate("ActivityPlans");
-
   };
+
+
   return (
     <View style={styles.container}>
-       <View style={styles.horizontalContainer}>
-      <View style={styles.imageContainer}>
-        <Image
+      <View style={styles.horizontalContainer}>
+        <View style={styles.imageContainer}>
+          <Image
             source={require("./../Assets/Images/calender.png")}
             style={styles.calendarImage}
-        />
-        <View style={styles.textContainer}>
-          <Text style={styles.titleText}>Wonderla</Text>
-          <Text style={styles.subtitleText}>Wonderla Tour Plan</Text>
+          />
+          <View style={styles.textContainer}>
+            <Text style={styles.titleText}>Wonderla</Text>
+            <Text style={styles.subtitleText}>Wonderla Tour Plan</Text>
+          </View>
         </View>
-      </View>
       </View>
       <TouchableOpacity onPress={handlePlusPress}>
         <Image
@@ -59,42 +63,37 @@ export default function Activities() {
       </TouchableOpacity>
 
       <View style={styles.bottomContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("StudentsAttendance")}
-        >
+        <TouchableOpacity onPress={handleHomeClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/home.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentsForm")}>
-          <Image
-            style={styles.bottomIcon}
-            source={require("./../Assets/Images/addIcon.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("StudentsAttendanceUpdate")}
-        >
+        <TouchableOpacity onPress={handleAttendanceClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/attendance.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("ReportsPage")}>
+        <TouchableOpacity onPress={handleStudentsFormClick}>
           <Image
             style={styles.bottomIcon}
-            source={require("./../Assets/Images/reports.png")}
+            source={require("./../Assets/Images/addButton.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("StudentProfile")}>
+        <TouchableOpacity onPress={handleTutorsFormClick}>
+          <Image
+            style={styles.bottomIcon}
+            source={require("./../Assets/Images/addIcon.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleStudentProfileClick}>
           <Image
             style={styles.bottomIcon}
             source={require("./../Assets/Images/profile.png")}
           />
         </TouchableOpacity>
       </View>
-
     </View>
   );
 }
@@ -103,14 +102,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 10,
-    backgroundColor: "#ffffff"
+    backgroundColor: "#ffffff",
     // paddingTop: 10,
   },
   horizontalContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 20,
@@ -121,8 +120,8 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   calendarImage: {
     width: 50, // Adjust as needed
@@ -130,30 +129,28 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   textContainer: {
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   titleText: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   subtitleText: {
     fontSize: 14,
     marginTop: 5,
   },
-  plusImage:{
+  plusImage: {
     marginLeft: 272,
     marginTop: 400,
   },
   bottomContainer: {
-    // position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    top: 15,
+    top: 16,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,
-    // paddingHorizontal: 20,
     backgroundColor: "#fff",
     borderTopWidth: 1,
     borderTopColor: "#fff",
@@ -163,6 +160,4 @@ const styles = StyleSheet.create({
     height: 50,
     resizeMode: "contain",
   },
-
-
 });

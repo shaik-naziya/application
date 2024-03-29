@@ -1,11 +1,10 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity} from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 
-
 export default function StudentProfile({ navigation }) {
   const [selectedOption, setSelectedOption] = useState("Attendance"); // Define selectedOption state
-  
+
   const handleOptionPress = (option) => {
     setSelectedOption(option); // Update selected option
     if (option === "Attendance") {
@@ -13,6 +12,38 @@ export default function StudentProfile({ navigation }) {
       navigation.navigate("StudentProfile");
     }
   };
+  const handlePortfolioPress = () => {
+    navigation.navigate("StudentProfile");
+  };
+
+  const handleHomeClick = () => {
+    navigation.navigate("StudentsAttendance");
+  };
+
+  const handleAttendanceClick = () => {
+    navigation.navigate("StudentsAttendanceUpdate");
+  };
+
+  const handleReportsClick = () => {
+    navigation.navigate("MarksEntry");
+  };
+
+  const handleActivityClick = () => {
+    navigation.navigate("Activities");
+  };
+
+  const handleStudentsFormClick = () => {
+    navigation.navigate("StudentsForm");
+  };
+
+  const handleTutorsFormClick = () => {
+    navigation.navigate("TutorsForm");
+  };
+
+  const handleStudentProfileClick = () => {
+    navigation.navigate("StudentProfile");
+  };
+
   useFocusEffect(
     React.useCallback(() => {
       setSelectedOption("Marks");
@@ -33,7 +64,6 @@ export default function StudentProfile({ navigation }) {
           <Text style={styles.fatherName}>Father: Syed Arham</Text>
         </View>
       </View>
-      
       <View style={styles.contactContainer}>
         <View style={styles.contactItem}>
           <Image
@@ -71,9 +101,8 @@ export default function StudentProfile({ navigation }) {
           <Text style={styles.optionText}>Marks</Text>
         </TouchableOpacity>
       </View>
-       <View style={styles.line} />
-
-       <View style={styles.calendarContainer}>
+      <View style={styles.line} />
+      <View style={styles.calendarContainer}>
         <View style={styles.calendarBox}>
           <Image
             style={styles.calendarIcon}
@@ -91,9 +120,7 @@ export default function StudentProfile({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-
-
-       <View style={styles.calendarContainer}>
+      <View style={styles.calendarContainer}>
         <View style={styles.calendarBox}>
           <Image
             style={styles.calendarIcon}
@@ -109,51 +136,49 @@ export default function StudentProfile({ navigation }) {
               source={require("./../Assets/Images/dropdownicon.png")}
             />
           </TouchableOpacity>
- 
         </View>
       </View>
-
       <View style={styles.bottomContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate("StudentsAttendance")}>
-        <Image
-          style={styles.bottomIcon}
-          source={require("./../Assets/Images/home.png")}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("StudentsForm")}>
-        <Image
-          style={styles.bottomIcon}
-          source={require("./../Assets/Images/addIcon.png")}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("StudentsAttendanceUpdate")}>
-        <Image
-          style={styles.bottomIcon}
-          source={require("./../Assets/Images/attendance.png")}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("ReportsPage")}>
-        <Image
-          style={styles.bottomIcon}
-          source={require("./../Assets/Images/reports.png")}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("StudentProfile")}>
-        <Image
-          style={styles.bottomIcon}
-          source={require("./../Assets/Images/profile.png")}
-        />
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity onPress={handleHomeClick}>
+          <Image
+            style={styles.bottomIcon}
+            source={require("./../Assets/Images/home.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleAttendanceClick}>
+          <Image
+            style={styles.bottomIcon}
+            source={require("./../Assets/Images/attendance.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleStudentsFormClick}>
+          <Image
+            style={styles.bottomIcon}
+            source={require("./../Assets/Images/addButton.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleTutorsFormClick}>
+          <Image
+            style={styles.bottomIcon}
+            source={require("./../Assets/Images/addIcon.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleStudentProfileClick}>
+          <Image
+            style={styles.bottomIcon}
+            source={require("./../Assets/Images/profile.png")}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: "white",
-    },
-    profileContainer: {
+  container: {
+    backgroundColor: "white",
+  },
+  profileContainer: {
     // backgroundColor: "white",
     flexDirection: "row",
     alignItems: "center",
@@ -234,7 +259,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderColor: "#ccc",
   },
-  calendarContainer2: { // Corrected style name
+  calendarContainer2: {
+    // Corrected style name
     marginLeft: 10,
   },
   monthYearContainer: {
@@ -266,16 +292,13 @@ const styles = StyleSheet.create({
   },
 
   bottomContainer: {
-    // position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    top: 63
-    ,
+    top: 60,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,
-    // paddingHorizontal: 20,
     backgroundColor: "#fff",
     borderTopWidth: 1,
     borderTopColor: "#fff",
@@ -285,7 +308,4 @@ const styles = StyleSheet.create({
     height: 50,
     resizeMode: "contain",
   },
-
-  
-
 });
